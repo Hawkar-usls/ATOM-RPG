@@ -1,0 +1,10 @@
+{
+  "schema_id": "hawkar.project-status.v1",
+  "project": "ATOM RPG",
+  "repository": "https://github.com/Hawkar-usls/ATOM-RPG",
+  "portfolio_class": "creative_embedded_game",
+  "last_reviewed": "2026-08-09",
+  "target_family": "M5Stack ATOMS3R",
+  "flagship_research": false,
+  "scientific_result_claimed": false
+}
