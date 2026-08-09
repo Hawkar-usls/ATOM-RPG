@@ -4,7 +4,11 @@
   "repository": "https://github.com/Hawkar-usls/ATOM-RPG",
   "portfolio_class": "creative_embedded_game",
   "last_reviewed": "2026-08-09",
+  "maturity": "WORK_IN_PROGRESS",
+  "completion_status": "INCOMPLETE",
   "target_family": "M5Stack ATOMS3R",
   "flagship_research": false,
-  "scientific_result_claimed": false
+  "scientific_result_claimed": false,
+  "production_readiness": "NOT_ESTABLISHED",
+  "visibility_policy": "https://github.com/Hawkar-usls/Janus/blob/main/portfolio-visibility.json"
 }
