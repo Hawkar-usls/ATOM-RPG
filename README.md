@@ -1,25 +1,41 @@
 <div align="center">
 
 # ATOM RPG
-### Small M5Stack ATOMS3R game experiment
+### Embedded game prototype for M5Stack ATOMS3R
 
-`embedded` · `game prototype` · `non-research`
+![Status](https://img.shields.io/badge/status-work%20in%20progress-8c959f)
+![Class](https://img.shields.io/badge/class-creative%20embedded%20prototype-6e7681)
 
 </div>
 
-ATOM RPG is a compact AFK/game experiment for M5Stack ATOMS3R-class hardware.
-
-This repository is presented as a **creative embedded project**, not as a scientific or AI-capability claim.
-
 ## Status
 
+**Work in Progress.** This is a small, incomplete embedded-game experiment. Gameplay, hardware assumptions, controls, and documentation may change.
+
+## Abstract
+
+ATOM RPG explores a compact AFK/RPG-style game loop on M5Stack ATOMS3R-class hardware.
+
+## Current scope
+
+- embedded gameplay experiments;
+- small-screen interaction;
+- ATOMS3R firmware iteration.
+
+## Boundary
+
 ```text
+MATURITY = WORK_IN_PROGRESS
 PROJECT_CLASS = CREATIVE_EMBEDDED_GAME
-TARGET_FAMILY = M5STACK_ATOMS3R
 FLAGSHIP_RESEARCH = FALSE
 SCIENTIFIC_RESULT = NOT_CLAIMED
+PRODUCT_READINESS = NOT_ESTABLISHED
 ```
 
-Machine-readable status: [`PROJECT_STATUS.json`](PROJECT_STATUS.json)
+## Review
 
-For the current research/engineering portfolio, see the [public index](https://github.com/Hawkar-usls/Janus/blob/main/portfolio-index.json).
+- Machine-readable project status: [`PROJECT_STATUS.json`](PROJECT_STATUS.json)
+- Portfolio maturity/visibility: [`portfolio-visibility.json`](https://github.com/Hawkar-usls/Janus/blob/main/portfolio-visibility.json)
+- Primary public work: [Hawkar profile](https://github.com/Hawkar-usls)
+
+Presentation follows the account's [public repository standard](https://github.com/Hawkar-usls/Janus/blob/main/docs/PUBLIC_REPOSITORY_PRESENTATION_STANDARD.md). No affiliation with MIT is implied by the presentation style.
