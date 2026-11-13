@@ -1,0 +1,33 @@
+name: ESSENCE singleton contract
+on:
+  pull_request:
+    paths: ['.janus/essence/**', '.github/workflows/essence-root-contract.yml']
+permissions: {contents: read}
+jobs:
+  singleton:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Validate inert root and collective future donor
+        env: {ESSENCE_REPO: "${{ github.repository }}"}
+        run: |
+          python - <<'PY'
+          import importlib.util, json, os, pathlib
+          d=pathlib.Path('.janus/essence')
+          def load(name):
+              spec=importlib.util.spec_from_file_location(name,d/(name+'.py'))
+              m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m);return m
+          manifest=json.loads((d/'manifest.json').read_text())
+          kernel=load('kernel');factory=load('collective_seed')
+          kernel.validate_manifest(manifest,os.environ['ESSENCE_REPO'])
+          factory.validate_manifest(manifest,os.environ['ESSENCE_REPO'])
+          factory.validate_innovations(json.loads((d/'innovations.json').read_text()),os.environ['ESSENCE_REPO'])
+          assert len(list(d.glob('kernel.py')))==1
+          assert manifest['enabled'] is False and not any(manifest['capabilities'].values())
+          assert set(x['role'] for x in manifest['microkernels'])==set(factory.ROLES)
+          print('ESSENCE_SINGLETON_INERT_PASS')
+          PY
