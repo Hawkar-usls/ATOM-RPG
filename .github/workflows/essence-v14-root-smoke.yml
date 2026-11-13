@@ -1,0 +1,38 @@
+name: ESSENCE v1.4 Root Read-Only CI
+
+on:
+  pull_request:
+    paths:
+      - ".janus/essence/fixture.json"
+      - ".janus/essence/manifest.json"
+      - ".janus/essence/kernel.py"
+      - ".github/workflows/essence-v14-root-smoke.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  local-immutable-microkernel-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify audited original kernel byte identity
+        shell: bash
+        run: test "$(git hash-object .janus/essence/kernel.py)" = "de5199978fbafcbda836b77da370943f7ea2514e"
+      - name: Run six-role read-only receipt and replay
+        shell: bash
+        run: |
+          python .janus/essence/kernel.py --manifest .janus/essence/manifest.json --fixture .janus/essence/fixture.json --out .essence_v14/root_review.json --allow-readonly --propose-child coding
+          python .janus/essence/kernel.py --verify .essence_v14/root_review.json
+      - name: Preserve independent repository receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: essence-v14-repository-root-receipt
+          path: .essence_v14/root_review.json
+          if-no-files-found: error
+          retention-days: 14
